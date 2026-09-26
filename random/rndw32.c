@@ -86,6 +86,9 @@
 #include "g10lib.h"
 #include "rand-internal.h"
 
+#ifdef GCRYPT_WIN98_TARGET
+#include "rndw98.inc"
+#else
 
 /* Definitions which are missing from the current GNU Windows32Api.  */
 #ifndef IOCTL_DISK_PERFORMANCE
@@ -1045,3 +1048,4 @@ _gcry_rndw32_gather_random_fast (void (*add)(const void*, size_t,
 
 
 }
+#endif /* GCRYPT_WIN98_TARGET */
